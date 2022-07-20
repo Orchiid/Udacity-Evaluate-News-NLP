@@ -31,7 +31,6 @@ window.addEventListener('DOMContentLoaded',() => {
             getNewUrl(data)
             const apiUrl= `${baseURL}?key=${data.key}&url=${getUrl.value}'&lang=en`
             if (verifyURL(getUrl.value) === true) {
-                
                 getData(apiUrl)
                 .then((data)=>{
                     projectData(data)
@@ -54,7 +53,7 @@ window.addEventListener('DOMContentLoaded',() => {
 
 
 
-
+// fetch the API_KEY from the server
 async function addUrl(url) {
     const data = await fetch(url);
     try {
@@ -66,7 +65,6 @@ async function addUrl(url) {
     };
 
 }
-
 async function getNewUrl(data) {
     const response = await data;
     if (response.key) {
@@ -77,7 +75,7 @@ async function getNewUrl(data) {
             }
 }
 
-
+//Function to GET Web API Data
 async function postData(url = '', data = {}) {
     try {
         const info = await fetch(url, {
@@ -124,6 +122,7 @@ async function sortData(url) {
 
 }
 
+// update data in the browser
 async function updateData(data) {
     const response = await data;
     if (response.info) {

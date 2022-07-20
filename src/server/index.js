@@ -29,6 +29,7 @@ app.get('/', function (req, res) {
     // res.sendFile(path.resolve('src/client/views/index.html'))
 });
 
+// To send API_KEY to client
 app.get('/fetchUrl' , async (req, res) => {
     const apiKey = {
         key : process.env.API_KEY
@@ -37,6 +38,7 @@ app.get('/fetchUrl' , async (req, res) => {
     console.log(apiKey)
 });
 
+// to save the info gotten from the api to project Data 
 app.post('/newUrl', async (req, res) => {
     const body = await req.body;
     projectData = body;
@@ -44,11 +46,13 @@ app.post('/newUrl', async (req, res) => {
     res.status(200).send(projectData);
 });
 
+//to send the info back to the client to be updated on the browser
 app.get('/sendUrl', async (req, res) => {
     if(projectData){
         res.send(projectData);
     }
 });
+
 // designates what port the app will listen to for incoming requests
 app.listen(PORT, (error) => {
     if (error) throw new Error(error)
